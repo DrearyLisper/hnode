@@ -25,4 +25,4 @@ main = do
     remoteAddrs <- getAddrInfo Nothing (Just "255.255.255.255") (Just "7000")
     hostname <- getHostName
     sendTo sock (C.pack $ "Hello from " ++ hostname ++ "!!!") (addrAddress $ head remoteAddrs)
-    threadDelay 1000000
+    threadDelay 10000000
