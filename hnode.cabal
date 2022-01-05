@@ -6,6 +6,7 @@ author:             Dreary Lisper
 maintainer:         drearylisper@gmail.com
 
 executable hnode
+    ghc-options:      -O3
     main-is:          Main.hs
     build-depends:    hostname, bytestring, network, base ^>=4.14.3.0
     hs-source-dirs:   src
