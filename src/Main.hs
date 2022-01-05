@@ -16,10 +16,13 @@ main = do
   bind sock (addrAddress serveraddr)
   setSocketOption sock ReuseAddr 1
   setSocketOption sock Broadcast 1
-  print sock
-  forkIO $ forever (do recv sock 4096 >>= print)
+
+  forkIO $ forever $ do
+    (message, addr) <- recvFrom sock 4096
+    print (addr, message)
+
   forever $ do
     remoteAddrs <- getAddrInfo Nothing (Just "255.255.255.255") (Just "7000")
     hostname <- getHostName
-    sendTo sock (C.pack hostname) (addrAddress $ head remoteAddrs)
+    sendTo sock (C.pack $ "Hello from " ++ hostname) (addrAddress $ head remoteAddrs)
     threadDelay 1000000
