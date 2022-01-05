@@ -5,8 +5,6 @@ version:            0.1.0.0
 author:             Dreary Lisper
 maintainer:         drearylisper@gmail.com
 
-extra-source-files: CHANGELOG.md
-
 executable hnode
     main-is:          Main.hs
     build-depends:    hostname, bytestring, network, base ^>=4.14.3.0
